@@ -13,17 +13,21 @@ const btn = document.querySelector('#btn');
 //   console.log('timeout 4');
 // }, 0); // 1
 
-const id = setTimeout(
-  (value) => {
-    console.log(value);
-  },
-  0,
-  'test'
-);
+// const id = setTimeout(
+//   (value) => {
+//     console.log(value);
+//   },
+//   100,
+//   'test'
+// );
 
-setTimeout(() => {
-  clearTimeout(id); // очищает таймаут
-}, 0);
+// setTimeout(() => {
+//   clearTimeout(id); // очищает таймаут
+// }, 0);
+
+const intervalId = setInterval(() => {
+  console.log('Interval');
+}, 1000);
 
 // setTimeout(() => {
 //   console.log('long');
