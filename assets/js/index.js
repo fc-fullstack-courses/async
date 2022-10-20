@@ -24,9 +24,9 @@ const btn = document.querySelector('#btn');
 // setTimeout(() => {
 //   clearTimeout(id); // очищает таймаут
 // }, 0);
-
+const time = document.getElementById('time');
 const intervalId = setInterval(() => {
-  console.log('Interval');
+  time.textContent = new Date();
 }, 1000);
 
 // setTimeout(() => {
