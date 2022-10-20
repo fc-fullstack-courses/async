@@ -77,3 +77,36 @@ const intervalId = setInterval(() => {
 
 // console.time('timeout');
 // countTimeout();
+
+// setTimeout(() => {
+//   console.log('1');
+
+//   setTimeout(() => {
+//     console.log('2');
+
+//     setTimeout(() => {
+//       console.log('3');
+
+//       setTimeout(() => {
+//         console.log('4');
+
+//       }, 6000);
+//     }, 3000);
+//   }, 3000);
+// }, 5000);
+
+const promise = new Promise((resolve, reject) => {
+  // setTimeout(() => {
+    resolve(42); // исполняет промис, аргумент становится его результатом
+  // }, 10000);
+
+  reject('error') // отклоняет промис, аргумент становится его результатом
+});
+
+const promise1 = promise.then((value) => {
+  // выполняется при исполнении промиса
+  console.log(value);
+},(err) => {
+  // выполняется при отклонении промиса
+  console.log(err);
+});
