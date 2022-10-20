@@ -39,3 +39,12 @@ const intervalId = setInterval(() => {
 //   j++;
 // }
 // console.timeEnd('loop timer');
+
+
+/*
+  Написать код на setTimeout или на setInterval
+  который раз в 100 милисекунд будет выводить в консоль числа
+  от 1 до 20
+  setInterval -> if + clearInterval
+  setTimeout -> recursion + if
+*/
