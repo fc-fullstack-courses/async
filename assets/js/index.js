@@ -40,7 +40,6 @@ const intervalId = setInterval(() => {
 // }
 // console.timeEnd('loop timer');
 
-
 /*
   Написать код на setTimeout или на setInterval
   который раз в 100 милисекунд будет выводить в консоль числа
@@ -48,3 +47,33 @@ const intervalId = setInterval(() => {
   setInterval -> if + clearInterval
   setTimeout -> recursion + if
 */
+
+// function countInterval() {
+//   let counter = 1;
+
+//   const id = setInterval(() => {
+//     console.log(counter);
+//     counter++;
+//     if (counter > 20) {
+//       clearInterval(id);
+//      console.timeEnd('interval');
+//     }
+//   }, 100);
+// }
+
+// console.time('interval');
+// countInterval();
+
+// function countTimeout(counter = 1) {
+//   if (counter <= 20) {
+//     setTimeout(() => {
+//       console.log(counter++);
+//       countTimeout(counter);
+//     }, 100);
+//   } else {
+//     console.timeEnd('timeout');
+//   }
+// }
+
+// console.time('timeout');
+// countTimeout();
