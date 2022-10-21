@@ -95,18 +95,90 @@ const intervalId = setInterval(() => {
 //   }, 3000);
 // }, 5000);
 
-const promise = new Promise((resolve, reject) => {
-  // setTimeout(() => {
-    resolve(42); // исполняет промис, аргумент становится его результатом
-  // }, 10000);
+const loginRequest = new Promise((resolve, reject) => {
+  // отправляем пользователя на сервер
+  const userData = { login: 'login1234', password: 'test1234' };
 
-  reject('error') // отклоняет промис, аргумент становится его результатом
+  setTimeout(() => resolve(userData), 2000); // данные пошли на сервер // исполняет промис, аргумент становится его результатом
+  // reject('error'); // отклоняет промис, аргумент становится его результатом
 });
 
-const promise1 = promise.then((value) => {
-  // выполняется при исполнении промиса
-  console.log(value);
-},(err) => {
-  // выполняется при отклонении промиса
-  console.log(err);
-});
+// const promise1 = promise.then(
+//   (resultOfPromise) => {
+//     // выполняется при исполнении промиса
+//     arr.push(resultOfPromise);
+//   },
+//   (err) => {
+//     // выполняется при отклонении промиса
+//     console.log(err);
+//   }
+// );
+
+const usersOnServer = new Map([
+  [
+    'login1234',
+    {
+      login: 'login1234',
+      password: 'test1234',
+      picSrc: 'https://asdsfdsgdsf.jpeg',
+    },
+  ],
+]);
+
+// на сервере мы проверяем данные про пользователя
+// const response = loginRequest.then((loginData) => {
+//   if (usersOnServer.has(loginData.login)) {
+//     const foundUser = usersOnServer.get(loginData.login);
+
+//     if (loginData.password === foundUser.password) {
+//       // все хорошо надо вернуть пользователя
+//       return foundUser;
+//     }
+//     throw new Error('Incorrect password');
+//   }
+//   throw new Error('User doesnt exist');
+// });
+
+// response.then((user) => {
+//   alert('You have logged in');
+
+// },(err) => {
+//   alert(err);
+// });
+loginRequest
+  .then((loginData) => {
+    if (usersOnServer.has(loginData.login)) {
+      const foundUser = usersOnServer.get(loginData.login);
+
+      if (loginData.password === foundUser.password) {
+        // все хорошо надо вернуть пользователя
+        return foundUser;
+      }
+      throw new Error('Incorrect password');
+    }
+    throw new Error('User doesnt exist');
+  })
+  .then((user) => {
+    alert('You have logged in');
+
+    return user;
+  })
+  .then((user) => {
+    const res = Math.random() > 0.5;
+
+    if (res) {
+      return user;
+    } else {
+      throw new Error('bad luck');
+    }
+  })
+  .catch((err) => {
+    // универсальный обработчик ошибок в цепочке промисов
+    console.log(err);
+  })
+  .finally(() => {
+    // исполняется в конце цепочки вне зависимости 
+    // от конечного состояния промиса
+    alert('yo');
+  });
+
