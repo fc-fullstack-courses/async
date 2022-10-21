@@ -198,4 +198,14 @@ const user = {
 const json = JSON.stringify(user); // осуществляет сериализацию
 const newUser = JSON.parse(json); // десериализация
 
-const deepCopy = JSON.parse(JSON.stringify(user)) // глубокая копия обьекта
+const deepCopy = JSON.parse(JSON.stringify(user)); // глубокая копия обьекта
+
+const res = fetch('http://localhost:5500/data.json');
+
+res
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
