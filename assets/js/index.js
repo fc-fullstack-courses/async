@@ -159,7 +159,7 @@ loginRequest
     throw new Error('User doesnt exist');
   })
   .then((user) => {
-    alert('You have logged in');
+    // alert('You have logged in');
 
     return user;
   })
@@ -177,8 +177,25 @@ loginRequest
     console.log(err);
   })
   .finally(() => {
-    // исполняется в конце цепочки вне зависимости 
+    // исполняется в конце цепочки вне зависимости
     // от конечного состояния промиса
-    alert('yo');
+    // alert('yo');
   });
 
+const fullfilledPromise = Promise.resolve(1100); // создает исполненній промис
+const rejectedPromise = Promise.reject('test'); // создает отклоненный промис
+
+const user = {
+  id: 1564651,
+  name: 'Test test',
+  age: 42,
+  isMale: true,
+  test: {
+    test: 1,
+  },
+};
+
+const json = JSON.stringify(user); // осуществляет сериализацию
+const newUser = JSON.parse(json); // десериализация
+
+const deepCopy = JSON.parse(JSON.stringify(user)) // глубокая копия обьекта
